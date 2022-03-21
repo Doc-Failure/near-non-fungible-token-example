@@ -5,7 +5,7 @@
   "scripts": {
     "clean": "rm -rf ./build && rm -rf ./neardev",
     "build:debug": "asb --target debug",
-    "build:release": "asb"
+    "build": "asb"
   },
   "keywords": [],
   "author": "stefano.convertino@gmail.com",
