@@ -25,3 +25,6 @@ This repository shows you how to use OpenBlimp to create a fungible token for th
    (In the scripts folder you can find some files with a lot of useful commands.)
 5. Mint some token in your address: `near call $CONTRACT ft_mint '{"account":$ID_ACCOUNT,"amount":"100"}' --account-id $ID_ACCOUNT`
 6. Launch your Near wallet and begin interacting with your new token.
+
+how to export contracts data in bash:
+yarn deploy:dev && export CONTRACT=$(cat ./neardev/dev-account) && export ID=<your wallet id>

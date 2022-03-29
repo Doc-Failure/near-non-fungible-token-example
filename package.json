@@ -5,7 +5,9 @@
   "scripts": {
     "clean": "rm -rf ./build && rm -rf ./neardev",
     "build:debug": "asb --target debug",
-    "build": "asb"
+    "build": "asb",
+    "deploy:test": "yarn build && near deploy --wasmFile ./build/release/main.wasm --accountId $CONTRACT",
+    "deploy:dev": "near dev-deploy ./build/release/main.wasm"
   },
   "keywords": [],
   "author": "stefano.convertino@gmail.com",
