@@ -1,4 +1,4 @@
-import {nft_initialize_impl,nft_mint_impl, nft_metadata_impl, nft_tokens_for_owner_impl, nft_total_supply_impl } from "openblimp";
+import {nft_initialize_impl,nft_mint_impl, nft_metadata_impl, nft_tokens_for_owner_impl, nft_total_supply_impl, nft_supply_for_owner_impl } from "openblimp";
 import { NFTtokenMetadata, NFTContractMetadata, Token } from "openblimp";
 import { u128, context, PersistentSet, PersistentVector } from "near-sdk-as";
 /* import { TokenId } from "openblimp/assembly/contracts/utils/utils"; */
@@ -18,7 +18,7 @@ const metadata:NFTtokenMetadata=new NFTtokenMetadata(
   "", // URL to an off-chain JSON file with more info.
   "" // Base64-encoded sha256 hash of JSON from reference field. Required if `reference` is included.
 );
-
+/* 
 export function nft_transfer(
     receiver_id: string,
     token_id: string,
@@ -43,19 +43,14 @@ export function nft_transfer_call(
     approved_account_ids: Map<string, number>|null,
   ): boolean {
       return false
-  }
+  } */
 
 // Returns the token with the given `token_id` or `null` if no such token.
-export function nft_token(token_id: string): Token|null {
-      return new Token("1", "doc_failure.testnet", metadata);
-}
-
-export function nft_tokens(
-  from_index: string|null, // default: "0"
-  limit: number, // default: unlimited (could fail due to gas limit)
-): Token[] {  
-return [new Token("1", "doc_failure.testnet", metadata)]}
-
+/* export function nft_token(token_id: string): Token|null { */
+     /*  return new Token("1", "doc_failure.testnet", metadata); */
+ /*     return null
+// 
+ */
 /*
 export function ft_balance_of(account_id: string): string {
     return ft_balance_of_impl(account_id).toString();
@@ -69,46 +64,27 @@ export function nft_mint( receiver_id: string, token_id: string, metadata:NFTtok
     nft_mint_impl( receiver_id, token_id, metadata);
 }
 
-export function nft_mint_batch(owner_ids: string[], metadata: NFTtokenMetadata): void {
+/* export function nft_mint_batch(owner_ids: string[], metadata: NFTtokenMetadata): void {
   return;
 }
-
+ */
 export function nft_metadata():NFTContractMetadata | null{
    return nft_metadata_impl();
 }
 
   // Query for all the tokens for an owner
-  export function nft_tokens_for_owner(account_id: string): Array<Token> | null{
-    // get the set of tokens for the passed in owner
-  /*   let tokens_for_owner_set: PersistentSet<Token>|null = this.tokens_per_owner.get(account_id);
-    // if there is some set of tokens, we'll set the tokens variable equal to that set
-    let tokens: PersistentSet<Token> = tokens_for_owner_set?tokens_for_owner_set:PersistentSet.prototype; */
-    // qui manca il limite da....a....
-   // nft_tokens_for_owner_impl(account_id, from_index, limit)
-
-   //PersistentVector<TokenId>
-   // nft_tokens_for_owner_impl(account_id, u128.Zero, limit)
-    const res: PersistentVector<Token>|null= nft_tokens_for_owner_impl(account_id, u128.Zero, u128.Max);
-    return get_nft_tokens(res?res:new PersistentVector<Token>(''));
+  export function nft_tokens_for_owner(account_id: string): Array<Token>{
+    return nft_tokens_for_owner_impl(account_id, u128.Zero, u128.Max);
   }
 
-
-export function get_nft_tokens(res: PersistentVector<Token>): Array<Token>{
-  let result: Array<Token>=new Array<Token>();
-  for(let i = 0; i < res.length; i++) {
-    result[i] = res[i];
-  }
-  return result;
-}
-
-  export function nft_supply_for_owner( account_id: string ): u128 {
-      return new u128(1)
+  export function nft_supply_for_owner( account_id: string ): number {
+      return nft_supply_for_owner_impl(account_id);
   }
 
-  export function nft_total_supply(): u128 {
+  export function nft_total_supply(): number {
     return nft_total_supply_impl();
   }
 
-  export function nft_on_transfer( sender_id: string,  previous_owner_id: string, token_id: string, msg: string ): void{
+/*   export function nft_on_transfer( sender_id: string,  previous_owner_id: string, token_id: string, msg: string ): void{
       return
-  };
+  }; */
