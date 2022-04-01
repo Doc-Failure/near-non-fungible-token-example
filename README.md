@@ -1,3 +1,5 @@
+This library is under heavy development. Please use it just in a test environment.
+
 # `Near Fungible Token Example`
 
 [Check this Medium article](https://medium.com/@stefano.convertino/how-to-create-and-deploy-a-fungible-token-on-near-network-b9cd8aec721), to learn how to build and deploy this repo.
